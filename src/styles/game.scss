@@ -1,0 +1,124 @@
+.scene {
+    max-height: 100vh;
+}
+
+.scrolling-bk {
+  background: url('c:/git/svg-game/src/components/scene.svg') repeat;
+  animation: scrollbk 7s -5s linear infinite;
+}
+
+#scene {
+  animation:10s scroll infinite linear;
+  top:0;
+  left:0;
+}
+
+@keyframes scrollbk {
+  100% { background-position: 200% 0; }
+}
+
+@keyframes scroll {
+  100% { transform: translateX(-100%); }
+}
+
+.btn {
+  display: inline-block;
+  padding: 5px 12px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 4px;
+  border: 1px solid #c0c0bf;
+  color: #333333;
+  margin: 0;
+  line-height: 1.5;
+  cursor: pointer;
+  white-space: pre-wrap;
+  text-align: center;
+  touch-action: manipulation;
+  background-color: #fff;
+  margin: 10px;
+
+  &:active {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  }
+}
+
+.shape {
+  position: absolute;
+  transition: fill 0.7s, r 0.7s, transform 0.7s ease-in-out, height 0.7s ease-in-out;
+  stroke: black;
+  stroke-width: 3px;
+}
+
+.animate1 .circle {
+  transform: translateX(0);
+  fill: blue;
+  r: 40px;
+}
+
+.animate2 .circle {
+  transform: translateX(50px);
+  fill: purple;
+  r: 47px;
+}
+
+.animate1 .square {
+  transform: translateX(100px);
+  fill: green;
+  height: 100px;
+}
+
+.animate2 .square {
+  transform: translateX(25px);
+  fill: orange;
+  height: 150px;
+}
+
+// .jump {
+//   animation-duration: 1s;
+//   animation-name: jump;
+//   animation-iteration-count: infinite;
+//   animation-direction: alternate;
+// }
+
+// @keyframes jump {
+//   0% {
+//     cy: 300;
+//   }
+
+//   100% {
+//     cy: 100;
+//     fill: #690004;
+//     r: 20;
+//   }
+// }
+
+.st0{
+  clip-path:url(#SVGID_2_);
+  fill:none;
+  stroke:#EE2D2F;
+  stroke-width:0.0654;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+}
+.st1{
+  clip-path:url(#SVGID_2_);
+  fill:#4FC4D3;
+}
+.st2{
+  clip-path:url(#SVGID_2_);
+}
+.st3{
+  fill:#692E7D;
+}
+.st4{
+  fill:#835BA5;
+}
+.st5{
+  fill:#FFFFFF;
+}
+.st6{
+  fill:#481F5A;
+}
