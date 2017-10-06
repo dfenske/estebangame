@@ -19,11 +19,11 @@ export default class Game extends Component {
         this.timeline = new TimelineMax();
 
         this.timeline.addLabel('start')
-            .to(this.sky, 400, {
+            .to(this.sky, 100, {
                 backgroundPosition: '1000% 0',
                 repeat: -1
             }, 'start')
-            .to(this.greenery, 250, {
+            .to(this.greenery, 15, {
                 backgroundPosition: '-1000% 0',
                 repeat: -1
             }, 'start')
