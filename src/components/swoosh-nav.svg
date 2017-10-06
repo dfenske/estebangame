@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1356px" height="134px" viewBox="0 0 1356 134" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="87.1511255%" y1="-118.367887%" x2="-4.21909316%" y2="91.8526687%" id="linearGradient-1">
+            <stop stop-color="#F54E4E" offset="0%"></stop>
+            <stop stop-color="#8B355B" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="5.20194683%" y1="121.311455%" x2="89.9814335%" y2="-24.5917382%" id="linearGradient-2">
+            <stop stop-color="#FE8A8A" offset="0%"></stop>
+            <stop stop-color="#FECE89" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="3.96446598%" y1="155.855819%" x2="67.5300532%" y2="-9.77297165%" id="linearGradient-3">
+            <stop stop-color="#F7A154" offset="0%"></stop>
+            <stop stop-color="#FEEEC5" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="dashboard">
+            <g id="Nav">
+                <path d="M1,132 C638.818414,132 591.021636,76 1368,76 C1368,54.521912 1368,13.2442748 1368,0 C792.961135,1.86848184e-13 697.647951,1.53921065e-13 4.54747351e-13,2.68786751e-13 C7.04118305e-12,123.36355 1,113.352155 1,132 Z" id="Background-strand" fill="url(#linearGradient-1)" transform="translate(684.000000, 66.000000) rotate(-720.000000) translate(-684.000000, -66.000000) "></path>
+                <path d="M1.8189894e-12,133 C632.738035,133 599.210457,77.6897038 1370,77.6897038 L1370,75.2110826 C511.98704,71.8695939 600.119361,109.306322 0,109.306322 L1.8189894e-12,133 Z" id="Background-strand" fill="url(#linearGradient-2)"></path>
+                <path d="M9.09494702e-13,134 C632.738035,134 599.210457,78.8890122 1370,78.8890122 L1370,67 C521.542282,67 704.341628,131.791522 0,131.791522 L9.09494702e-13,134 Z" id="Background-strand" fill="url(#linearGradient-3)" style="mix-blend-mode: overlay;"></path>
+            </g>
+        </g>
+    </g>
+</svg>

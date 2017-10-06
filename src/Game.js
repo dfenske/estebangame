@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { TweenMax, Power2, Bounce, TimelineMax } from 'gsap'
+import { TweenMax, Power2, TimelineMax } from 'gsap';
 import Trail from './components/Trail';
 
 export default class Game extends Component {
@@ -11,7 +10,7 @@ export default class Game extends Component {
 
         this.state = {
             position: 'animate1'
-        }
+        };
     }
 
     componentDidMount() {
@@ -28,9 +27,9 @@ export default class Game extends Component {
                 backgroundPosition: '-1000% 0',
                 repeat: -1
             }, 'start')
-            .staggerTo("[id^='flower']", 2, {
+            .staggerTo('[id^="flower"]', 2, {
                 cycle: { rotation: [360, -360] },
-                transformOrigin: "50% 50%",
+                transformOrigin: '50% 50%',
                 repeat: -1
             }, .2, 'start')
             .to(this.trail.coin, 8, {
@@ -43,46 +42,37 @@ export default class Game extends Component {
         if(e.code === 'Space') {
             e.preventDefault();
 
-            TweenMax.to(this.esteban, .3, {y:"-=100", ease: Power2.easeOut});
-            TweenMax.to(this.esteban, .3, {y:"160",  ease: Power2.easeIn, delay:.3});
+            TweenMax.to(this.esteban, .3, { y:'-=100', ease: Power2.easeOut });
+            TweenMax.to(this.esteban, .3, { y:'160',  ease: Power2.easeIn, delay:.3 });
         }
     }
 
     _handleOnClick(e) {
         if(this.state.position === 'animate1') {
-            this.setState({position: 'animate2'});
+            this.setState({ position: 'animate2' });
         } else {
-            this.setState({position: 'animate1'});
+            this.setState({ position: 'animate1' });
         }
     }
 
     render() {
         return (
             <div>
+                <div className="error-message">
+                    <h2>
+                        Oops! 
+                    </h2>
+                    <h3>The page you were looking for was not found. As a consolation, here's a fun game!</h3>
+                </div>
                 <div className="gameview">
                     <div className="sky" ref={(sky) => { this.sky = sky; }}>
-                        <div className="greenery" ref={(greenery) => { this.greenery = greenery }}>
+                        <div className="greenery" ref={(greenery) => { this.greenery = greenery; }}>
                             <div className="estebanwrapper" ref={(esteban) => { this.esteban = esteban; }}>
                                 <div className="esteban"/>
                             </div>
                             <Trail />
                         </div>
                     </div>
-                </div>
-
-                <div>
-                    <button className="btn" onClick={this._handleOnClick.bind(this)}>Animate!</button>
-                </div>
-                <div>
-                    <svg className={this.state.position} x="0" y="0" viewBox="0 0 200 300" height="200" width="200">
-                      <circle className="shape circle" cx="50" cy="50" r="40"/>
-                      <rect className="shape square" x="0" y="100" height="100" width="100" />
-                    </svg>
-                </div>
-                <div>
-                    <svg x="0" y="400" viewBox="0 0 500 500" height="500" width="500">
-                        <rect className="shape square" x="0" y="100" ref="myDiv" height="100" width="100" fill="red"/>
-                    </svg>
                 </div>
             </div>
         );
