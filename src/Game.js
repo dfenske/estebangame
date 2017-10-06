@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { TweenMax, Power2, Bounce, TimelineMax } from 'gsap'
+import { TweenMax, Power2, TimelineMax } from 'gsap';
 import Trail from './components/Trail';
 
 export default class Game extends Component {
@@ -11,7 +10,7 @@ export default class Game extends Component {
 
         this.state = {
             position: 'animate1'
-        }
+        };
     }
 
     componentDidMount() {
@@ -28,9 +27,9 @@ export default class Game extends Component {
                 backgroundPosition: '-1000% 0',
                 repeat: -1
             }, 'start')
-            .staggerTo("[id^='flower']", 2, {
+            .staggerTo('[id^="flower"]', 2, {
                 cycle: { rotation: [360, -360] },
-                transformOrigin: "50% 50%",
+                transformOrigin: '50% 50%',
                 repeat: -1
             }, .2, 'start')
             .to(this.trail.coin, 8, {
@@ -43,22 +42,17 @@ export default class Game extends Component {
         if(e.code === 'Space') {
             e.preventDefault();
 
-            TweenMax.to(this.trail.esteban, .3, {y:"-=300", ease: Power2.easeOut});
-            TweenMax.to(this.trail.esteban, .3, {y:"0",  ease: Power2.easeIn, delay:.3});
+            TweenMax.to(this.esteban, .3, { y:'-=100', ease: Power2.easeOut });
+            TweenMax.to(this.esteban, .3, { y:'160',  ease: Power2.easeIn, delay:.3 });
         }
     }
 
     _handleOnClick(e) {
         if(this.state.position === 'animate1') {
-            this.setState({position: 'animate2'});
+            this.setState({ position: 'animate2' });
         } else {
-            this.setState({position: 'animate1'});
+            this.setState({ position: 'animate1' });
         }
-    }
-
-    _jump(e) {
-        TweenMax.to('#esteban-chestnut', .3, {y:"-=300", ease: Power2.easeOut});
-        TweenMax.to('#esteban-chestnut', .3, {y:"150",  ease: Power2.easeIn, delay:.3});
     }
 
     render() {
@@ -72,8 +66,11 @@ export default class Game extends Component {
                 </div>
                 <div className="gameview">
                     <div className="sky" ref={(sky) => { this.sky = sky; }}>
-                        <div className="greenery" ref={(greenery) => { this.greenery = greenery }}>
-                            <Trail ref={(trail) => { this.trail = trail }}/>
+                        <div className="greenery" ref={(greenery) => { this.greenery = greenery; }}>
+                            <div className="estebanwrapper" ref={(esteban) => { this.esteban = esteban; }}>
+                                <div className="esteban"/>
+                            </div>
+                            <Trail />
                         </div>
                     </div>
                 </div>

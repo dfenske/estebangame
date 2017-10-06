@@ -1,20 +1,20 @@
 #root {
-  height: calc(100vh - 240px);
-  margin-top: 60px;
+    height: calc(100vh - 240px);
+    margin-top: 60px;
 }
 
 #header {
-  margin-top: -140px;
+    margin-top: -140px;
 }
 
 .error-message {
-  width: 80%;
-  margin: 0 auto;
-  padding: 30px 0px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px 0px;
 
-  h2 {
-    padding-bottom: 15px;
-  }
+    h2 {
+        padding-bottom: 15px;
+    }
 }
 
 .scene {
@@ -36,94 +36,124 @@
 .gameview {
     @include animated-area;
     margin: 0 auto;
+    overflow: hidden;
 }
 
-.esteban, .trail {
+.trail {
+    margin-top: -102px;
+}
+
+.estebanwrapper {
+    width: 164.5px;
+    height: 102px;
+    overflow: hidden;
+    transform: translate3D(400px, 160px, 0);
+}
+
+.esteban {
+    backface-visibility: hidden;
+    background: url('/src/components/esteban.svg') no-repeat;
+    width: 164.5px;
+    height: 411.66667px;
+    animation: walk 0.78s steps(4) infinite;
+}
+
+@keyframes walk {
+    100% {
+        background-position: 0 -411.66667px;
+    }
+}
+
+.trail {
     @include animated-area;
 }
 
 .sky {
     @include animated-area;
-    background: url('/src/components/sky.svg');
-    //animation: scrollbk 30s -5s linear infinite;
+    background: url('/src/components/sky.svg'); //animation: scrollbk 30s -5s linear infinite;
 }
 
 .greenery {
     @include animated-area;
-    background: url('/src/components/greenery.svg');
-    //animation: scrollbk 15s -5s linear infinite;
+    background: url('/src/components/greenery.svg'); //animation: scrollbk 15s -5s linear infinite;
 }
 
 #scene {
-  animation:10s scroll infinite linear;
-  top:0;
-  left:0;
+    animation: 10s scroll infinite linear;
+    top: 0;
+    left: 0;
 }
 
 @keyframes scrollright {
-    100% { background-position: -200% 0; }
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 @keyframes scrollbk {
-    100% { background-position: 200% 0; }
+    100% {
+        background-position: 200% 0;
+    }
 }
 
 @keyframes scroll {
-    100% { transform: translateX(-100%); }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
 .btn {
-  display: inline-block;
-  padding: 5px 12px;
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  border-radius: 4px;
-  border: 1px solid #c0c0bf;
-  color: #333333;
-  margin: 0;
-  line-height: 1.5;
-  cursor: pointer;
-  white-space: pre-wrap;
-  text-align: center;
-  touch-action: manipulation;
-  background-color: #fff;
-  margin: 10px;
+    display: inline-block;
+    padding: 5px 12px;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 4px;
+    border: 1px solid #c0c0bf;
+    color: #333333;
+    margin: 0;
+    line-height: 1.5;
+    cursor: pointer;
+    white-space: pre-wrap;
+    text-align: center;
+    touch-action: manipulation;
+    background-color: #fff;
+    margin: 10px;
 
-  &:active {
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  }
+    &:active {
+        box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    }
 }
 
 .shape {
-  position: absolute;
-  transition: fill 0.7s, r 0.7s, transform 0.7s ease-in-out, height 0.7s ease-in-out;
-  stroke: black;
-  stroke-width: 3px;
+    position: absolute;
+    transition: fill 0.7s, r 0.7s, transform 0.7s ease-in-out, height 0.7s ease-in-out;
+    stroke: black;
+    stroke-width: 3px;
 }
 
 .animate1 .circle {
-  transform: translateX(0);
-  fill: blue;
-  r: 40px;
+    transform: translateX(0);
+    fill: blue;
+    r: 40px;
 }
 
 .animate2 .circle {
-  transform: translateX(50px);
-  fill: purple;
-  r: 47px;
+    transform: translateX(50px);
+    fill: purple;
+    r: 47px;
 }
 
 .animate1 .square {
-  transform: translateX(100px);
-  fill: green;
-  height: 100px;
+    transform: translateX(100px);
+    fill: green;
+    height: 100px;
 }
 
 .animate2 .square {
-  transform: translateX(25px);
-  fill: orange;
-  height: 150px;
+    transform: translateX(25px);
+    fill: orange;
+    height: 150px;
 }
 
 // .jump {
@@ -132,44 +162,47 @@
 //   animation-iteration-count: infinite;
 //   animation-direction: alternate;
 // }
-
 // @keyframes jump {
 //   0% {
 //     cy: 300;
 //   }
-
 //   100% {
 //     cy: 100;
 //     fill: #690004;
 //     r: 20;
 //   }
 // }
+.st0 {
+    clip-path: url(#SVGID_2_);
+    fill: none;
+    stroke: #EE2D2F;
+    stroke-width: 0.0654;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+}
 
-.st0{
-  clip-path:url(#SVGID_2_);
-  fill:none;
-  stroke:#EE2D2F;
-  stroke-width:0.0654;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  stroke-miterlimit:10;
+.st1 {
+    clip-path: url(#SVGID_2_);
+    fill: #4FC4D3;
 }
-.st1{
-  clip-path:url(#SVGID_2_);
-  fill:#4FC4D3;
+
+.st2 {
+    clip-path: url(#SVGID_2_);
 }
-.st2{
-  clip-path:url(#SVGID_2_);
+
+.st3 {
+    fill: #692E7D;
 }
-.st3{
-  fill:#692E7D;
+
+.st4 {
+    fill: #835BA5;
 }
-.st4{
-  fill:#835BA5;
+
+.st5 {
+    fill: #FFFFFF;
 }
-.st5{
-  fill:#FFFFFF;
-}
-.st6{
-  fill:#481F5A;
+
+.st6 {
+    fill: #481F5A;
 }

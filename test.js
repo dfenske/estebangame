@@ -8,17 +8,16 @@ import '@ps/header-footer/lib/styles/ps-header.scss';
 import '@ps/header-footer/lib/styles/ps-footer.scss';
 
 ReactDOM.render(
-    <Game />,
-    document.getElementById('root')
-);
-
-ReactDOM.render(
     <Header reverse={true} />,
     document.getElementById('header')
 );
 
-
 ReactDOM.render(
     <Footer />,
     document.getElementById('footer')
+);
+
+ReactDOM.render(
+    <Game />,
+    document.getElementById('root')
 );
