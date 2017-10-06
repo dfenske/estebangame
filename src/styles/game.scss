@@ -2,15 +2,39 @@
     max-height: 100vh;
 }
 
-.scrolling-bk {
-  background: url('c:/git/estebangame/src/components/scene.svg') repeat;
-  animation: scrollbk 7s -5s linear infinite;
+@mixin animated-area {
+    width: 100%;
+    height: 300px;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+}
+
+.esteban {
+    @include animated-area;
+}
+
+.sky {
+    @include animated-area;
+    background: url('/src/components/sky.svg');
+    animation: scrollright 30s -5s linear infinite;
+}
+
+.grass {
+    @include animated-area;
+    background: url('/src/components/grass.svg');
+    animation: scrollbk 15s -5s linear infinite;
 }
 
 #scene {
   animation:10s scroll infinite linear;
   top:0;
   left:0;
+}
+
+@keyframes scrollright {
+    from { background-position: 100% 0; }
+    to { background-position: -100% 0; }
 }
 
 @keyframes scrollbk {

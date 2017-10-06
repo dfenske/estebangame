@@ -29,7 +29,12 @@ export default class Game extends Component {
     render() {
         return (
             <div>
-                <Scene />
+                <div className="sky">
+                    <div className="grass">
+                        <Esteban/>
+                    </div>
+                </div>
+
                 <div>
                     <button className="btn" onClick={this._handleOnClick.bind(this)}>Animate!</button>
                     <button className="btn" onClick={this._jump.bind(this)}>Jump!</button>

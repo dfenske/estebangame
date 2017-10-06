@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default class Esteban extends Component {
     render() {
         return (
-            <svg className="scene" viewBox="0 0 4002 1348">
+            <svg className="esteban" viewBox="1 0 4001 1348">
               <g id="esteban-chestnut" fillRule="nonzero" transform="matrix(1,0,0,1,0,150)">
                 <g id="Group" fill="#692E7D">
                   <path id="Shape" d="M2405.12 894.61c.397 2.99-.03 5.724-1.082 8.106-.352.805-.78 1.566-1.268 2.288 0 0 0 .003-.002.004-.103 2.565-.954 4.936-2.343 6.9-.008.01-.01.02-.02.028-.213.3-.44.59-.68.87-.023.028-.042.056-.067.082-.205.238-.423.466-.647.687-1.91 1.908-4.42 3.22-7.22 3.627 1.61 7.62 9.26 5.976 9.3 5.968 6.89-8.92 7.67-18.888 4.04-28.56z"/>
