@@ -1,6 +1,5 @@
 #root {
-    height: calc(100vh - 240px);
-    margin-top: 60px;
+    margin: 60px 0;
 }
 
 #header {
@@ -55,7 +54,6 @@
     background: url('/src/components/esteban.svg') no-repeat;
     width: 164.5px;
     height: 411.66667px;
-    animation: walk 0.78s steps(4) infinite;
 }
 
 @keyframes walk {
