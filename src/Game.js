@@ -64,28 +64,18 @@ export default class Game extends Component {
     render() {
         return (
             <div>
+                <div className="error-message">
+                    <h2>
+                        Oops! 
+                    </h2>
+                    <h3>The page you were looking for was not found. As a consolation, here's a fun game!</h3>
+                </div>
                 <div className="gameview">
                     <div className="sky" ref={(sky) => { this.sky = sky; }}>
                         <div className="greenery" ref={(greenery) => { this.greenery = greenery }}>
                             <Trail ref={(trail) => { this.trail = trail }}/>
                         </div>
                     </div>
-                </div>
-
-                <div>
-                    <button className="btn" onClick={this._handleOnClick.bind(this)}>Animate!</button>
-                    <button className="btn" onClick={this._jump.bind(this)}>Jump!</button>
-                </div>
-                <div>
-                    <svg className={this.state.position} x="0" y="0" viewBox="0 0 200 300" height="200" width="200">
-                      <circle className="shape circle" cx="50" cy="50" r="40"/>
-                      <rect className="shape square" x="0" y="100" height="100" width="100" />
-                    </svg>
-                </div>
-                <div>
-                    <svg x="0" y="400" viewBox="0 0 500 500" height="500" width="500">
-                        <rect className="shape square" x="0" y="100" ref="myDiv" height="100" width="100" fill="red"/>
-                    </svg>
                 </div>
             </div>
         );
