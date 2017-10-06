@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import { TweenMax, Power2, TimelineMax } from 'gsap';
+import { TweenMax, Power2, TimelineMax, Back  } from 'gsap';
 import Trail from './components/Trail';
 
 export default class Game extends Component {
     constructor(props) {
         super(props);
-        this._handleOnClick = this._handleOnClick.bind(this);
         this._handleOnKeyPressed = this._handleOnKeyPressed.bind(this);
-
-        this.state = {
-            position: 'animate1'
-        };
     }
 
     componentDidMount() {
@@ -65,6 +60,7 @@ export default class Game extends Component {
                     <h3>The page you were looking for was not found. As a consolation, here's a fun game!</h3>
                 </div>
                 <div className="gameview">
+                <div className="directions">Press space to start!</div>
                     <div className="sky" ref={(sky) => { this.sky = sky; }}>
                         <div className="greenery" ref={(greenery) => { this.greenery = greenery; }}>
                             <div className="estebanwrapper" ref={(esteban) => { this.esteban = esteban; }}>
