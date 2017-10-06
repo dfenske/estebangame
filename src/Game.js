@@ -43,8 +43,8 @@ export default class Game extends Component {
         if(e.code === 'Space') {
             e.preventDefault();
 
-            TweenMax.to(this.trail.esteban, .3, {y:"-=300", ease: Power2.easeOut});
-            TweenMax.to(this.trail.esteban, .3, {y:"0",  ease: Power2.easeIn, delay:.3});
+            TweenMax.to(this.esteban, .3, {y:"-=100", ease: Power2.easeOut});
+            TweenMax.to(this.esteban, .3, {y:"160",  ease: Power2.easeIn, delay:.3});
         }
     }
 
@@ -56,25 +56,22 @@ export default class Game extends Component {
         }
     }
 
-    _jump(e) {
-        TweenMax.to('#esteban-chestnut', .3, {y:"-=300", ease: Power2.easeOut});
-        TweenMax.to('#esteban-chestnut', .3, {y:"150",  ease: Power2.easeIn, delay:.3});
-    }
-
     render() {
         return (
             <div>
                 <div className="gameview">
                     <div className="sky" ref={(sky) => { this.sky = sky; }}>
                         <div className="greenery" ref={(greenery) => { this.greenery = greenery }}>
-                            <Trail ref={(trail) => { this.trail = trail }}/>
+                            <div className="estebanwrapper" ref={(esteban) => { this.esteban = esteban; }}>
+                                <div className="esteban"/>
+                            </div>
+                            <Trail />
                         </div>
                     </div>
                 </div>
 
                 <div>
                     <button className="btn" onClick={this._handleOnClick.bind(this)}>Animate!</button>
-                    <button className="btn" onClick={this._jump.bind(this)}>Jump!</button>
                 </div>
                 <div>
                     <svg className={this.state.position} x="0" y="0" viewBox="0 0 200 300" height="200" width="200">

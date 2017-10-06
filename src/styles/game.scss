@@ -17,9 +17,34 @@
 .gameview {
     @include animated-area;
     margin: 0 auto;
+    overflow: hidden;
 }
 
-.esteban, .trail {
+.trail {
+    margin-top: -102px;
+}
+
+.estebanwrapper {
+    width: 164.5px;
+    height: 102px;
+    overflow: hidden;
+    transform: translate3D(400px, 160px, 0);
+
+}
+
+.esteban {
+    backface-visibility: hidden;
+    background: url('/src/components/esteban.svg') no-repeat;
+    width: 164.5px;
+    height: 411.66667px;
+    animation: walk 0.78s steps(4) infinite;
+}
+
+@keyframes walk {
+  100% { background-position: 0 -411.66667px; }
+}
+
+.trail {
     @include animated-area;
 }
 
