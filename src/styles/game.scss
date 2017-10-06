@@ -3,27 +3,36 @@
 }
 
 @mixin animated-area {
-    width: 100%;
-    height: 300px;
+    width: 320px;
+    height: 100px;
     transform: translateZ(0);
     backface-visibility: hidden;
-    perspective: 1000;
+
+    @media (min-width: 960px) {
+        width: 960px;
+        height: 300px;
+    }
 }
 
-.esteban {
+.gameview {
+    @include animated-area;
+    margin: 0 auto;
+}
+
+.esteban, .trail {
     @include animated-area;
 }
 
 .sky {
     @include animated-area;
     background: url('/src/components/sky.svg');
-    animation: scrollright 30s -5s linear infinite;
+    //animation: scrollbk 30s -5s linear infinite;
 }
 
-.grass {
+.greenery {
     @include animated-area;
-    background: url('/src/components/grass.svg');
-    animation: scrollbk 15s -5s linear infinite;
+    background: url('/src/components/greenery.svg');
+    //animation: scrollbk 15s -5s linear infinite;
 }
 
 #scene {
@@ -33,16 +42,15 @@
 }
 
 @keyframes scrollright {
-    from { background-position: 100% 0; }
-    to { background-position: -100% 0; }
+    100% { background-position: -200% 0; }
 }
 
 @keyframes scrollbk {
-  100% { background-position: 200% 0; }
+    100% { background-position: 200% 0; }
 }
 
 @keyframes scroll {
-  100% { transform: translateX(-100%); }
+    100% { transform: translateX(-100%); }
 }
 
 .btn {
