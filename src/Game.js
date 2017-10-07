@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { TweenMax, Power2, TimelineMax, SteppedEase, Back  } from 'gsap';
+import Alert from '@ps/payscale-design/lib/Alert';
 import Trail from './components/Trail';
+import Message from './Message';
+import Score from './Score';
 
 export default class Game extends Component {
     constructor(props) {
@@ -8,7 +11,8 @@ export default class Game extends Component {
         this._handleOnKeyPressed = this._handleOnKeyPressed.bind(this);
 
         this.state = {
-            start: false
+            start: false,
+            score: 0
         };
     }
 
@@ -55,25 +59,19 @@ export default class Game extends Component {
         }
     }
 
-    _handleOnClick(e) {
-        if(this.state.position === 'animate1') {
-            this.setState({ position: 'animate2' });
-        } else {
-            this.setState({ position: 'animate1' });
-        }
-    }
-
     render() {
+        let { score, start } = this.state;
+
         return (
             <div>
-                <div className="error-message">
-                    <h2>
-                        Oops!
-                    </h2>
-                    <h3>{`The page you were looking for was not found. As a consolation, here's a fun game!`}</h3>
+                <div className="container">
+                    <Alert className='pxl-margin-vertical-large'
+                        message={<Message />}
+                        level='warning'
+                        close={false} />
                 </div>
                 <div className="gameview">
-                <div className="directions">Press space to start!</div>
+                    { start ? null : <div className="directions">Press space to start!</div> }
                     <div className="sky" ref={(sky) => { this.sky = sky; }}>
                         <div className="greenery" ref={(greenery) => { this.greenery = greenery; }}>
                             <div className="estebanwrapper" ref={(esteban) => { this.esteban = esteban; }}>
@@ -82,6 +80,7 @@ export default class Game extends Component {
                             <Trail />
                         </div>
                     </div>
+                    <Score score={score} />
                 </div>
             </div>
         );

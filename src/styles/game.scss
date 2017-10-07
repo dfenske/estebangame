@@ -17,8 +17,18 @@
     }
 }
 
-.scene {
-    max-height: 100vh;
+.score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 22px;
+
+    img {
+        height: 30px;
+        margin-right: 10px;
+    }
 }
 
 @mixin animated-area {
