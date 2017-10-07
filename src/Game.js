@@ -6,6 +6,10 @@ export default class Game extends Component {
     constructor(props) {
         super(props);
         this._handleOnKeyPressed = this._handleOnKeyPressed.bind(this);
+
+        this.state = {
+            start: false
+        };
     }
 
     componentDidMount() {
