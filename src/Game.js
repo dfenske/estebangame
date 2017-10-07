@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TweenMax, Power2, TimelineMax, SteppedEase, Back  } from 'gsap';
+import { TweenMax, Power2, TimelineMax, SteppedEase, Back, Power0  } from 'gsap';
 import Alert from '@ps/payscale-design/lib/Alert';
 import Trail from './components/Trail';
 import Message from './Message';
@@ -28,13 +28,17 @@ export default class Game extends Component {
                 repeat: -1
             }, 'start')
             .addLabel('run', .5)
-            .to(this.sky, 100, {
-                backgroundPosition: '1000% 0',
-                repeat: -1
+            .to(this.sky, 30, {
+                backgroundPosition: '200% 0',
+                repeat: -1,
+                force3D: true,
+                ease: Power0.easeInOut
             }, 'run')
-            .to(this.greenery, 15, {
-                backgroundPosition: '-1000% 0',
-                repeat: -1
+            .to(this.greenery, 20, {
+                backgroundPosition: '-200% 0',
+                repeat: -1,
+                force3D: true,
+                ease: Power0.easeInOut
             }, 'run')
             .staggerTo('[id^="flower"]', 2, {
                 cycle: { rotation: [360, -360] },
@@ -50,7 +54,7 @@ export default class Game extends Component {
 
             if(this.state.start) {
                 TweenMax.to(this.esteban, .3, { y:'-=100', ease: Power2.easeOut });
-                TweenMax.to(this.esteban, .3, { y:'160',  ease: Power2.easeIn, delay:.3 });
+                TweenMax.to(this.esteban, .3, { y:'180',  ease: Power2.easeIn, delay:.3 });
             }
             else {
                 this.timeline.play();
@@ -71,7 +75,7 @@ export default class Game extends Component {
                         close={false} />
                 </div>
                 <div className="gameview">
-                    { start ? null : <div className="directions">Press space to start!</div> }
+                    { start ? null : <div className="directions"><div>Press space to start!</div></div> }
                     <div className="sky" ref={(sky) => { this.sky = sky; }}>
                         <div className="greenery" ref={(greenery) => { this.greenery = greenery; }}>
                             <div className="estebanwrapper" ref={(esteban) => { this.esteban = esteban; }}>
