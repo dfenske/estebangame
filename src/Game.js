@@ -6,6 +6,7 @@ import Message from './Message';
 import Score from './Score';
 import Coin from './components/Coin';
 import Complete from './Complete';
+import Timer from './Timer';
 
 export default class Game extends Component {
     constructor(props) {
@@ -13,8 +14,8 @@ export default class Game extends Component {
         this._handleOnKeyPressed = this._handleOnKeyPressed.bind(this);
         this.flyCoin = this.flyCoin.bind(this);
         this.collectCoin = this.collectCoin.bind(this);
-        this.stopGame = this.stopGame.bind(this);
         this.pauseTimeline = this.pauseTimeline.bind(this);
+        this.tick = this.tick.bind(this);
 
         this.state = {
             coinsFlying: false,
@@ -22,7 +23,8 @@ export default class Game extends Component {
             score: 0,
             started: false,
             stopping: false,
-            stopped: false
+            stopped: false,
+            tick: 0
         };
     }
 
@@ -151,12 +153,19 @@ export default class Game extends Component {
 
     pauseTimeline() {
         this.timeline.pause();
+        clearInterval(this.timer);
         this.setState({ stopped: true });
     }
 
-    stopGame() {
-        setTimeout(this.pauseTimeline, 4000);
-        this.setState({ stopping: true });
+    tick() {
+        const { tick } = this.state;
+
+        if((tick+1)*50 === 11000) {
+            setTimeout(this.pauseTimeline, 4000);
+            this.setState({ stopping: true });
+        }
+
+        this.setState({ tick: tick+1 });
     }
 
     _handleOnKeyPressed(e) {
@@ -168,7 +177,7 @@ export default class Game extends Component {
                 TweenMax.to(this.esteban, .3, { y:'220',  ease: Power2.easeIn, delay:.3 });
             }
             else {
-                setTimeout(this.stopGame, 5000);
+                this.timer = setInterval(this.tick, 50);
                 this.timeline.play();
                 this.setState({ started: true });
             }
@@ -176,7 +185,7 @@ export default class Game extends Component {
     }
 
     render() {
-        let { score, started, numCoins, stopped } = this.state;
+        let { score, started, numCoins, stopped, tick } = this.state;
         let coins = [];
 
         for(let i = 0; i < numCoins; i++) {
@@ -210,6 +219,7 @@ export default class Game extends Component {
                         </div>
                     </div>
                     <Score score={score} />
+                    <Timer tick={tick} />
                 </div>
             </div>
         );
