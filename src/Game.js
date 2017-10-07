@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { TweenMax, Power2, TimelineMax, SteppedEase, Back, Power0  } from 'gsap';
 import Alert from '@ps/payscale-design/lib/Alert';
 import Trail from './components/Trail';
-import Message from './Message';
-import Score from './Score';
-import Coin from './components/Coin';
-import Complete from './Complete';
-import Timer from './Timer';
+import Message from './components/Message';
+import Score from './components/Score';
+import Complete from './components/Complete';
+import Timer from './components/Timer';
+import Directions from './components/Directions';
 
 export default class Game extends Component {
     constructor(props) {
@@ -19,7 +20,6 @@ export default class Game extends Component {
 
         this.state = {
             coinsFlying: false,
-            numCoins: 10,
             score: 0,
             started: false,
             stopping: false,
@@ -29,13 +29,15 @@ export default class Game extends Component {
     }
 
     componentDidMount() {
+        let { numCoins } = this.props;
+
         const esteban = this.esteban;
         const collectCoin = this.collectCoin;
         let coins = [];
 
-        for(let i = 0; i < this.state.numCoins; i++) {
+        for(let i = 0; i < numCoins; i++) {
             coins.push({
-                element: this[`coin${i}`].svg,
+                element: this[`coin${i}`],
                 id: `coin${i}`
             });
         }
@@ -94,11 +96,12 @@ export default class Game extends Component {
     }
 
     componentDidUpdate() {
-        let { started, coinsFlying, numCoins } = this.state;
+        let { started, coinsFlying } = this.state;
+        let { numCoins } = this.props;
 
         if(started && !coinsFlying) {
             for(let i = 0; i < numCoins; i++) {
-                this.flyCoin(this[`coin${i}`].svg, `coin${i}`);
+                this.flyCoin(this[`coin${i}`], `coin${i}`);
             }
         }
     }
@@ -159,8 +162,9 @@ export default class Game extends Component {
 
     tick() {
         const { tick } = this.state;
+        const { durationMs } = this.props;
 
-        if((tick+1)*50 === 11000) {
+        if((tick+1)*50 === (durationMs - 4000)) {
             setTimeout(this.pauseTimeline, 4000);
             this.setState({ stopping: true });
         }
@@ -185,11 +189,16 @@ export default class Game extends Component {
     }
 
     render() {
-        let { score, started, numCoins, stopped, tick } = this.state;
+        let { score, started, stopped, tick } = this.state;
+        let { numCoins, durationMs } = this.props;
         let coins = [];
 
         for(let i = 0; i < numCoins; i++) {
-            coins.push(<Coin key={i} ref={(coin) => { this[`coin${i}`] = coin; }} />);
+            coins.push(
+                <div className="coin" key={i} ref={(coin) => { this[`coin${i}`] = coin; }}>
+                    <img src="//cdn-payscale.com/content/estebanrun/coin.svg" />
+                </div>
+            );
         }
 
         return (
@@ -201,13 +210,7 @@ export default class Game extends Component {
                         close={false} />
                 </div>
                 <div className="gameview">
-                    { started ? null :
-                        <div className="directions">
-                            <div>
-                                <p className="detail">{`Purple squirrels are hard to come by, but we've got one! Help our purple squirrel collect all the coins.`}</p>
-                                <p className="play">Press space to play!</p>
-                            </div>
-                        </div> }
+                    { started ? null : <Directions/> }
                     { stopped ? <Complete score={score} /> : null }
                     <div className="sky" ref={(sky) => { this.sky = sky; }}>
                         <div className="greenery" ref={(greenery) => { this.greenery = greenery; }}>
@@ -219,9 +222,19 @@ export default class Game extends Component {
                         </div>
                     </div>
                     <Score score={score} />
-                    <Timer tick={tick} />
+                    <Timer tick={tick} duration={durationMs} />
                 </div>
             </div>
         );
     }
 }
+
+Game.propTypes = {
+    durationMs: PropTypes.number,
+    numCoins: PropTypes.number
+};
+
+Game.defaultProps = {
+    durationMs: 15000,
+    numCoins: 20
+};

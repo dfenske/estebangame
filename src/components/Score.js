@@ -5,7 +5,7 @@ const Score = (props) => {
 
     return (
         <div className="score">
-            <img src="/src/components/coin.svg" />
+            <img src="//cdn-payscale.com/content/estebanrun/coin.svg" />
             <span>{score}</span>
         </div>
     );

@@ -3,7 +3,10 @@
 }
 
 .header-swoosh {
-    margin-top: -70px;
+    img {
+        margin-top: -70px;
+    }
+
     width: 100%;
 }
 
@@ -27,10 +30,13 @@
 
 .coin {
     position: absolute;
-    width: 30px;
     top: 0;
     left: 0;
     visibility: hidden;
+
+    img {
+        width: 30px;
+    }
 }
 
 .score {
@@ -146,7 +152,7 @@
 
 .esteban {
     backface-visibility: hidden;
-    background: url('/src/components/esteban.svg') no-repeat;
+    background: url('//cdn-payscale.com/content/estebanrun/esteban.svg') no-repeat;
     width: 80px;
     height: 299.4px;
 }
@@ -164,11 +170,11 @@
 .sky {
     @include animated-area;
     width: 200%;
-    background: url('/src/components/sky.svg'); //animation: scrollbk 30s -5s linear infinite;
+    background: url('//cdn-payscale.com/content/estebanrun/sky.svg'); //animation: scrollbk 30s -5s linear infinite;
 }
 
 .greenery {
     @include animated-area;
     width: 200%;
-    background: url('/src/components/greenery.svg'); //animation: scrollbk 15s -5s linear infinite;
+    background: url('//cdn-payscale.com/content/estebanrun/greenery.svg'); //animation: scrollbk 15s -5s linear infinite;
 }
