@@ -1,5 +1,5 @@
-#root {
-    margin: 0 0 60px 0;
+.content {
+    margin-bottom: 100px;
 }
 
 .header-swoosh {
@@ -7,22 +7,12 @@
     width: 100%
 }
 
-.error-message {
-    width: 80%;
-    margin: 0 auto;
-    padding: 30px 0px;
-
-    h2 {
-        padding-bottom: 15px;
-    }
-}
-
 .timer {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-family: 'Roboto Mono', monospace;
     color: #fff;
+    font-family: 'Roboto Mono', monospace;
+    position: absolute;
+    right: 10px;
+    top: 10px;
 }
 
 .coin {
@@ -31,7 +21,7 @@
     left: 0;
     visibility: hidden;
 
-    img {
+    .coin__img {
         width: 30px;
     }
 }
@@ -45,7 +35,7 @@
     font-size: 22px;
     color: #fff;
 
-    img {
+    .score__icon {
         height: 30px;
         margin-right: 10px;
     }
@@ -57,7 +47,51 @@
     backface-visibility: hidden;
 }
 
-.directions, .complete {
+.gameview {
+    @include animated-area;
+    width: 960px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.trail {
+    @include animated-area;
+    position: absolute;
+    bottom: 0;
+}
+
+.estebanwrapper {
+    height: 73px;
+    overflow: hidden;
+    transform: translate3D(400px, 220px, 0);
+    width: 80px;
+}
+
+.esteban {
+    background: url('//cdn-payscale.com/content/estebanrun/esteban.svg') no-repeat;
+    height: 299.4px;
+    width: 80px;
+}
+
+.sky {
+    @include animated-area;
+    background: url('//cdn-payscale.com/content/estebanrun/sky.svg');
+    width: 200%;
+}
+
+.greenery {
+    @include animated-area;
+    background: url('//cdn-payscale.com/content/estebanrun/greenery.svg');
+    width: 200%;
+}
+
+@keyframes walk {
+    100% {
+        background-position: 0 -411.66667px;
+    }
+}
+
+.overlay {
     width: 100%;
     height: 100%;
     display: flex;
@@ -65,7 +99,8 @@
     justify-content: center;
     position: absolute;
 
-    div {
+    .overlay__message {
+        position: relative;
         width: 480px;
         min-height: 150px;
         display: flex;
@@ -79,44 +114,24 @@
         padding: 15px;
         text-align: center;
     }
-}
 
-.directions {
-  .detail, .play {
-      color: #fff;
-      font-family: 'Roboto Mono', monospace;
-  }
-
-  .detail {
-      font-size: 12px;
-      margin-bottom: 10px;
-  }
-
-  .play {
-      font-size: 18px;
-  }
-}
-
-.complete {
-    padding: 15px;
-
-    div {
-        position: relative;
-    }
-
-    p {
+    .overlay__detail {
         color: #fff;
         font-family: 'Roboto Mono', monospace;
-    }
-
-    .final-score {
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 5px;
-    }
-
-    .copy {
         font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+    .overlay__cta {
+        color: #fff;
+        font-family: 'Roboto Mono', monospace;
+        font-size: 18px;
+    }
+}
+
+.overlay--complete {
+    .overlay__cta {
+        font-weight: 700;
         margin-bottom: 15px;
     }
 
@@ -127,56 +142,8 @@
         margin-bottom: 5px;
     }
 
-    .replay, .replay:hover {
+    .overlay--complete__replay, .overlay--complete__replay:hover {
         font-size: 14px;
         color: #fff;
     }
-}
-
-.gameview {
-    @include animated-area;
-    width: 960px;
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-.trail {
-    position: absolute;
-    bottom: 0;
-}
-
-.estebanwrapper {
-    width: 80px;
-    height: 73px;
-    overflow: hidden;
-    transform: translate3D(400px, 220px, 0);
-}
-
-.esteban {
-    backface-visibility: hidden;
-    background: url('//cdn-payscale.com/content/estebanrun/esteban.svg') no-repeat;
-    width: 80px;
-    height: 299.4px;
-}
-
-@keyframes walk {
-    100% {
-        background-position: 0 -411.66667px;
-    }
-}
-
-.trail {
-    @include animated-area;
-}
-
-.sky {
-    @include animated-area;
-    width: 200%;
-    background: url('//cdn-payscale.com/content/estebanrun/sky.svg');
-}
-
-.greenery {
-    @include animated-area;
-    width: 200%;
-    background: url('//cdn-payscale.com/content/estebanrun/greenery.svg');
 }

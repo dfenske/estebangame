@@ -208,13 +208,13 @@ export default class Game extends Component {
         for(let i = 0; i < numCoins; i++) {
             coins.push(
                 <div className="coin" key={i} ref={(coin) => { this[`coin${i}`] = coin; }}>
-                    <img src="//cdn-payscale.com/content/estebanrun/coin.svg" />
+                    <img className="coin__img" src="//cdn-payscale.com/content/estebanrun/coin.svg" />
                 </div>
             );
         }
 
         return (
-            <div>
+            <div className="content">
                 <div className="container">
                     <Alert className='pxl-margin-vertical-large'
                         message={<Message />}
