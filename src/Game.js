@@ -17,6 +17,7 @@ export default class Game extends Component {
         this.collectCoin = this.collectCoin.bind(this);
         this.pauseTimeline = this.pauseTimeline.bind(this);
         this.tick = this.tick.bind(this);
+        this._handleOnClickReplay = this._handleOnClickReplay.bind(this);
 
         this.state = {
             coinsFlying: false,
@@ -172,6 +173,17 @@ export default class Game extends Component {
         this.setState({ tick: tick+1 });
     }
 
+    _handleOnClickReplay() {
+        this.setState({
+            coinsFlying: false,
+            score: 0,
+            started: false,
+            stopping: false,
+            stopped: false,
+            tick: 0
+        });
+    }
+
     _handleOnKeyPressed(e) {
         if(e.code === 'Space') {
             e.preventDefault();
@@ -211,7 +223,7 @@ export default class Game extends Component {
                 </div>
                 <div className="gameview">
                     { started ? null : <Directions/> }
-                    { stopped ? <Complete score={score} /> : null }
+                    { stopped ? <Complete score={score} onReplay={this._handleOnClickReplay} /> : null }
                     <div className="sky" ref={(sky) => { this.sky = sky; }}>
                         <div className="greenery" ref={(greenery) => { this.greenery = greenery; }}>
                             <div className="estebanwrapper" ref={(esteban) => { this.esteban = esteban; }}>

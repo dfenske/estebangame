@@ -3,11 +3,8 @@
 }
 
 .header-swoosh {
-    img {
-        margin-top: -70px;
-    }
-
-    width: 100%;
+    margin-top: -70px;
+    width: 100%
 }
 
 .error-message {
@@ -103,8 +100,8 @@
 .complete {
     padding: 15px;
 
-    a, a:hover {
-        color: #f76e54
+    div {
+        position: relative;
     }
 
     p {
@@ -120,7 +117,7 @@
 
     .copy {
         font-size: 12px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
 
     .pxl-btn, .pxl-btn:hover {
@@ -128,6 +125,11 @@
         background-color: #f76e54;
         color: #fff;
         margin-bottom: 5px;
+    }
+
+    .replay, .replay:hover {
+        font-size: 14px;
+        color: #fff;
     }
 }
 
@@ -170,11 +172,11 @@
 .sky {
     @include animated-area;
     width: 200%;
-    background: url('//cdn-payscale.com/content/estebanrun/sky.svg'); //animation: scrollbk 30s -5s linear infinite;
+    background: url('//cdn-payscale.com/content/estebanrun/sky.svg');
 }
 
 .greenery {
     @include animated-area;
     width: 200%;
-    background: url('//cdn-payscale.com/content/estebanrun/greenery.svg'); //animation: scrollbk 15s -5s linear infinite;
+    background: url('//cdn-payscale.com/content/estebanrun/greenery.svg');
 }
