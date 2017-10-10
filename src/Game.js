@@ -19,6 +19,7 @@ export default class Game extends Component {
         this.tick = this.tick.bind(this);
         this._handleOnClickReplay = this._handleOnClickReplay.bind(this);
         this.jump = this.jump.bind(this);
+        this._handleOnTap = this._handleOnTap.bind(this);
 
         this.state = {
             coinsFlying: false,
@@ -204,6 +205,12 @@ export default class Game extends Component {
         }
     }
 
+    _handleOnTap() {
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            this.jump();
+        }
+    }
+
     render() {
         let { score, started, stopped, tick } = this.state;
         let { numCoins, durationMs } = this.props;
@@ -225,7 +232,7 @@ export default class Game extends Component {
                         level='warning'
                         close={false} />
                 </div>
-                <div className="gameview" onClick={this.jump}>
+                <div className="gameview" onClick={this._handleOnTap}>
                     <div className="gameview__background">
                         <div className="gameview__sky" ref={(sky) => { this.sky = sky; }}>
                             <div className="gameview__greenery" ref={(greenery) => { this.greenery = greenery; }}>

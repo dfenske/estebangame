@@ -3,8 +3,13 @@
 }
 
 .header-swoosh {
+    background: url('/src/components/swoosh-nav.svg');
+    width: 100%;
+    min-height: 132px;
     margin-top: -70px;
-    width: 100%
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vw/10.22);
 }
 
 .gameview {
