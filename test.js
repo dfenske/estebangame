@@ -8,7 +8,7 @@ import '@ps/header-footer/lib/styles/ps-header.scss';
 import '@ps/header-footer/lib/styles/ps-footer.scss';
 
 ReactDOM.render(
-    <Header reverse={true} />,
+    <Header reverse={false} />,
     document.getElementById('header')
 );
 

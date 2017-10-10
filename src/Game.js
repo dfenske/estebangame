@@ -18,6 +18,7 @@ export default class Game extends Component {
         this.pauseTimeline = this.pauseTimeline.bind(this);
         this.tick = this.tick.bind(this);
         this._handleOnClickReplay = this._handleOnClickReplay.bind(this);
+        this.jump = this.jump.bind(this);
 
         this.state = {
             coinsFlying: false,
@@ -184,19 +185,22 @@ export default class Game extends Component {
         });
     }
 
+    jump() {
+        if(this.state.started) {
+            TweenMax.to(this.esteban, .3, { y:'-=100', ease: Power2.easeOut });
+            TweenMax.to(this.esteban, .3, { y:'0',  ease: Power2.easeIn, delay:.3 });
+        }
+        else {
+            this.timer = setInterval(this.tick, 50);
+            this.timeline.play();
+            this.setState({ started: true });
+        }
+    }
+
     _handleOnKeyPressed(e) {
         if(e.code === 'Space') {
             e.preventDefault();
-
-            if(this.state.started) {
-                TweenMax.to(this.esteban, .3, { y:'-=100', ease: Power2.easeOut });
-                TweenMax.to(this.esteban, .3, { y:'220',  ease: Power2.easeIn, delay:.3 });
-            }
-            else {
-                this.timer = setInterval(this.tick, 50);
-                this.timeline.play();
-                this.setState({ started: true });
-            }
+            this.jump();
         }
     }
 
@@ -221,20 +225,22 @@ export default class Game extends Component {
                         level='warning'
                         close={false} />
                 </div>
-                <div className="gameview">
-                    { started ? null : <Directions/> }
-                    { stopped ? <Complete score={score} onReplay={this._handleOnClickReplay} /> : null }
-                    <div className="sky" ref={(sky) => { this.sky = sky; }}>
-                        <div className="greenery" ref={(greenery) => { this.greenery = greenery; }}>
-                            <div className="estebanwrapper" ref={(esteban) => { this.esteban = esteban; }}>
-                                <div className="esteban" ref={(estebanbg) => { this.estebanbg = estebanbg; }}/>
+                <div className="gameview" onClick={this.jump}>
+                    <div className="gameview__background">
+                        <div className="gameview__sky" ref={(sky) => { this.sky = sky; }}>
+                            <div className="gameview__greenery" ref={(greenery) => { this.greenery = greenery; }}>
+                                <Trail />
+                                {coins}
                             </div>
-                            <Trail />
-                            {coins}
                         </div>
+                    </div>
+                    <div className="gameview__estebanwrapper" ref={(esteban) => { this.esteban = esteban; }}>
+                        <div className="gameview__esteban" ref={(estebanbg) => { this.estebanbg = estebanbg; }}/>
                     </div>
                     <Score score={score} />
                     <Timer tick={tick} duration={durationMs} />
+                    { started ? null : <Directions/> }
+                    { stopped ? <Complete score={score} onReplay={this._handleOnClickReplay} /> : null }
                 </div>
             </div>
         );
